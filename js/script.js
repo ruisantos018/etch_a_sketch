@@ -1,19 +1,15 @@
-//var currentGridSize = 16;
 var colors = ["#0074D9", "#7FDBFF", "#39CCCC", "#3D9970", "#2ECC40", "#DB6862", "#FFDC00", "#FF851B", "#FF4136", "#9FD814", "#9350D5"];
 $(document).ready(function() {
     // generate initial 16x16 grid
     genGrid(16);
-
     // call resetGrid function when reset button is clicked
     $("#reset").click(function() { resetGrid(); });
-
     // change color depending on the button the user pressed
     $("#black").click(function() { changeColors("black"); });
     $("#green").click(function() { changeColors("green"); });
     $("#red").click(function() { changeColors("red"); });
     $("#random").click(function() { changeColors("random"); });
 });
-
 // generate grid
 function genGrid(gridSize) {
     /* divide the container's width by the amount of cells to find out what width they should have.
@@ -32,23 +28,19 @@ function genGrid(gridSize) {
         $(this).css("background-color", "#000");
     });
 };
-
 // clear grid function
 function clear() {
     $(".cell").remove();
 }
-
 // reset grid
 function resetGrid() {
     var gridSize = prompt("How many squares per side do you want? Max: 64");
     if (gridSize > 0 && gridSize <= 64) {
         clear();
         genGrid(gridSize);
-        //currentGridSize = gridSize;
     } else {
         resetGrid()
     }
-
 }
 // colors
 function changeColors(color) {
