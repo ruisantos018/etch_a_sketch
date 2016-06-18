@@ -1,9 +1,17 @@
+//var currentGridSize = 16;
+var colors = ["#0074D9", "#7FDBFF", "#39CCCC", "#3D9970", "#2ECC40", "#DB6862", "#FFDC00", "#FF851B", "#FF4136", "#9FD814", "#9350D5"];
 $(document).ready(function() {
     // generate initial 16x16 grid
     genGrid(16);
 
     // call resetGrid function when reset button is clicked
-    $("#reset").click(function(){resetGrid();});
+    $("#reset").click(function() { resetGrid(); });
+
+    // change color depending on the button the user pressed
+    $("#black").click(function() { changeColors("black"); });
+    $("#green").click(function() { changeColors("green"); });
+    $("#red").click(function() { changeColors("red"); });
+    $("#random").click(function() { changeColors("random"); });
 });
 
 // generate grid
@@ -21,7 +29,7 @@ function genGrid(gridSize) {
     $(".cell").css("height", cellSize);
     // change cell background
     $(".cell").hover(function() {
-        $(this).css("background-color", "#fff");
+        $(this).css("background-color", "#000");
     });
 };
 
@@ -32,7 +40,35 @@ function clear() {
 
 // reset grid
 function resetGrid() {
-    var gridSize = prompt("How many squares per side do you want?");
-    clear();
-    genGrid(gridSize);
-};
+    var gridSize = prompt("How many squares per side do you want? Max: 64");
+    if (gridSize > 0 && gridSize <= 64) {
+        clear();
+        genGrid(gridSize);
+        //currentGridSize = gridSize;
+    } else {
+        resetGrid()
+    }
+
+}
+// colors
+function changeColors(color) {
+    if (color === "black") {
+        $(".cell").hover(function() {
+            $(this).css("background-color", "#000");
+        });
+    } else if (color === "green") {
+        $(".cell").hover(function() {
+            $(this).css("background-color", "#4fb443");
+        });
+    } else if (color == "red") {
+        $(".cell").hover(function() {
+            $(this).css("background-color", "#b8483c");
+        });
+    } else if (color == "random") {
+        $(".cell").hover(function() {
+            // generate new color everytime a cell is hovered
+            var randomColor = colors[Math.floor(Math.random() * colors.length)];
+            $(this).css("background-color", randomColor);
+        });
+    }
+}
