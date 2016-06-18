@@ -1,0 +1,12 @@
+#container {
+    width:960px;
+    height:960px;
+    margin: 30px auto;
+    background-color:#ccc;
+}
+
+.cell {
+    float:left;
+    border: 1px solid #666;
+    background-color:#000;
+}
