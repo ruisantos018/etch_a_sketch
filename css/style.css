@@ -19,12 +19,10 @@ body {
 button {
     width: 100px;
     height: 30px;
-    display: block;
-    margin-left: 380px;
+    display: inline;
     margin-bottom: 3px;
 }
 
 #buttons {
-    position: absolute;
-    margin-right: 10px;
+    text-align:center;
 }
